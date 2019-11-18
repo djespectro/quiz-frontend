@@ -20,6 +20,8 @@ export class CloudProviderComponent implements OnInit {
   }
 
   requestQuizResult() {
+    this.service.getQuiz()
+        .subscribe((data) => this.clourProvicder = data);
     const REQUEST_MINUTES = 5000;
     setInterval(() => {
       this.service.getQuiz()
