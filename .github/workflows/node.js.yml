@@ -20,5 +20,5 @@ jobs:
       run: echo RELEASE_VERSION="v$(date +'%Y.%m.%d')" >> $GITHUB_ENV          
 
     - name: Release
-      run: echo $RELEASE_VERSION
+      run: echo {{ env.RELEASE_VERSION }}
     
