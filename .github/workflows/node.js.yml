@@ -16,9 +16,21 @@ jobs:
     steps:
     - uses: actions/checkout@v3    
 
+    - name: Create fake artifact
+      run: |
+        mkdir -p artifact
+        echo hello > artifact/world.txt
+        
     - name: Tag Release
       run: echo RELEASE_VERSION="v$(date +'%Y.%m.%d')" >> $GITHUB_ENV          
-
-    - name: Release-{{ env.RELEASE_VERSION }}
+    
+    - name: Release Version
       run: echo $RELEASE_VERSION
+
+    - name: Release
+      uses: softprops/action-gh-release@v1
+      # if: startsWith(github.ref, 'refs/tags/')
+      with:
+        tag_name: ${{ format('{0}', env.RELEASE_VERSION) }}
+        files: artifact/world.txt
     
