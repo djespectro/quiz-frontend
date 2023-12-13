@@ -19,6 +19,6 @@ jobs:
     - name: Tag Release
       run: echo RELEASE_VERSION="v$(date +'%Y.%m.%d')" >> $GITHUB_ENV          
 
-    - name: Release
-      run: echo {{ env.RELEASE_VERSION }}
+    - name: Release-{{ env.RELEASE_VERSION }}
+      run: echo $RELEASE_VERSION
     
